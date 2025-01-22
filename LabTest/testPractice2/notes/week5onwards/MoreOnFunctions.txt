@@ -1,0 +1,16 @@
+# Understanding scope: Global, enclosing, and local
+global_var = "I am global"  # Global variable
+
+def outer_function():
+    enclosing_var = "I am enclosing"  # Enclosing scope
+
+    def inner_function():
+        print(global_var)  # Accesses global variable
+        print(enclosing_var)  # Accesses enclosing variable
+
+    inner_function()
+
+outer_function()
+# Output:
+# I am global
+# I am enclosing

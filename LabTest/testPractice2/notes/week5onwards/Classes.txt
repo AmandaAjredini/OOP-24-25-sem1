@@ -1,0 +1,66 @@
+# Classes Introduction
+# Basic example of a class
+class Student:
+    def __init__(self, name, id):
+        self.name = name  # Student name
+        self.id = id  # Student ID
+
+    def __str__(self):
+        """String representation of a student."""
+        return f"Student: {self.name}, ID: {self.id}"
+
+# Creating and using a Student object
+s = Student("Alice", 123)
+print(s)  # Output: Student: Alice, ID: 123
+
+
+
+# Writing a Class
+# Writing a simple class with a method
+class Point:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+
+    def distance(self, other):
+        """Calculates distance between two points."""
+        return ((self.x - other.x) ** 2 + (self.y - other.y) ** 2) ** 0.5
+
+    def __str__(self):
+        """String representation of the Point object."""
+        return f"({self.x}, {self.y})"
+
+# Usage of the class
+p1 = Point(1, 2)  # Point at (1, 2)
+p2 = Point(4, 6)  # Point at (4, 6)
+print(f"Distance between points: {p1.distance(p2)}")  # Output: Distance between points: 5.0
+
+
+
+# Inheritance
+# Inheritance: A class inherits attributes and methods from another class
+class Vehicle:
+    def __init__(self, brand):
+        self.brand = brand
+
+    def drive(self):
+        """Defines driving behavior for vehicles."""
+        print(f"{self.brand} is driving.")
+
+class Car(Vehicle):  # Car inherits from Vehicle
+    def __init__(self, brand, model):
+        super().__init__(brand)  # Call parent constructor
+        self.model = model
+
+    def drive(self):
+        """Overrides the drive method for Car."""
+        super().drive()  # Call the parent drive method
+        print(f"The car model is {self.model}.")
+
+# Usage of inheritance
+my_car = Car("Toyota", "Corolla")
+my_car.drive()
+# Output:
+# Toyota is driving.
+# The car model is Corolla.
+

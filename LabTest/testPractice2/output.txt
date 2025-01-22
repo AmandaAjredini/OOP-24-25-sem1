@@ -1,0 +1,2 @@
+This will be written to the file.
+All output from print statements will be redirected to the file.

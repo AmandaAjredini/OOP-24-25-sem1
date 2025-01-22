@@ -1,0 +1,82 @@
+# File Handling Cheat Sheet
+
+# Opening a file
+file_name = "example.txt"
+
+# Modes:
+# 'r' - read (default)
+# 'w' - write (overwrites existing content)
+# 'a' - append (adds to the end of the file)
+# 'r+' - read and write
+file = open(file_name, 'w')  # Opening a file in write mode
+
+# Writing to a file
+file.write("Hello, world!\n")  # Writes a string to the file
+file.write("Python is great for file handling.\n")  # Adds another line
+file.close()  # Always close the file to save changes
+
+# Reading from a file
+file = open(file_name, 'r')  # Open in read mode
+content = file.read()  # Reads the entire file content
+print(content)  # Prints file content
+file.close()
+
+# Reading line-by-line
+file = open(file_name, 'r')
+lines = file.readlines()  # Reads all lines into a list
+print(lines)  # Prints list of lines
+file.close()
+
+# Appending to a file
+file = open(file_name, 'a')  # Open in append mode
+file.write("This line was added later.\n")
+file.close()
+
+# Using `with` statement (best practice to ensure file closes automatically)
+with open(file_name, 'r') as file:
+    for line in file:
+        print(line.strip())  # Reads and prints each line without extra whitespace
+
+# File methods
+file = open(file_name, 'r+')
+file.write("Adding text to the beginning\n")  # Writing at the beginning (overwrites content)
+file.seek(0)  # Moves cursor to the start of the file
+print(file.read())  # Reads entire content from the beginning
+file.close()
+
+# Checking if a file exists
+import os
+print(os.path.exists(file_name))  # Returns True if the file exists
+
+# File metadata
+print("File Size:", os.path.getsize(file_name), "bytes")  # Size in bytes
+
+# File manipulation
+# os.rename("old_name.txt", "new_name.txt")  # Renames a file
+# os.remove("example.txt")  # Deletes the file
+
+
+
+# Key Functions in file handling
+file.read()         # Reads the entire file content
+file.readline()     # Reads the next line
+file.readlines()    # Reads all lines into a list
+file.write(string)  # Writes the string to the file
+file.seek(offset)   # Moves the file pointer to the specified position
+file.close()        # Closes the file
+os.path.exists(path)  # Checks if a file exists
+os.remove(path)       # Deletes the specified file
+
+
+
+# Accessing File Content in Loops
+# Reading file content line by line
+with open(file_name, 'r') as file:
+    for line in file:
+        print(line.strip())
+
+# Writing multiple lines
+with open(file_name, 'w') as file:
+    for i in range(5):
+        file.write(f"Line {i+1}\n")
+

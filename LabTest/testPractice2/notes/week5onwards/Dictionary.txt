@@ -1,0 +1,14 @@
+# Working with dictionaries
+my_dict = {"name": "Alice", "age": 25}
+
+# Accessing values
+print(my_dict["name"])  # Output: Alice
+print(my_dict.get("age"))  # Output: 25
+
+# Adding and updating values
+my_dict["location"] = "New York"
+my_dict["age"] = 26
+
+# Iterating over keys and values
+for key, value in my_dict.items():
+    print(key, value)

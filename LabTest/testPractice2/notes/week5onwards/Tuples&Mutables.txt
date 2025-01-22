@@ -1,0 +1,15 @@
+# Tuples: Immutable sequences
+my_tuple = (1, 2, 3)
+
+# Attempting to modify a tuple results in an error
+try:
+    my_tuple[0] = 4
+except TypeError as e:
+    print(e)  # Output: 'tuple' object does not support item assignment
+
+# Copying lists (mutable sequences)
+import copy
+list1 = [[1, 2], [3, 4]]
+list2 = copy.deepcopy(list1)  # Deep copy creates a new independent object
+list2[0][0] = 100
+print(list1)  # Original remains unchanged: [[1, 2], [3, 4]]

@@ -1,0 +1,22 @@
+# Operator Overloading: Custom behavior for operators
+class Fraction:
+    def __init__(self, numerator, denominator):
+        self.numerator = numerator
+        self.denominator = denominator
+
+    def __add__(self, other):
+        """Defines addition for Fraction objects."""
+        if isinstance(other, Fraction):
+            new_numerator = self.numerator * other.denominator + other.numerator * self.denominator
+            new_denominator = self.denominator * other.denominator
+            return Fraction(new_numerator, new_denominator)
+        raise TypeError("Can only add Fraction objects.")
+
+    def __str__(self):
+        """String representation of the fraction."""
+        return f"{self.numerator}/{self.denominator}"
+
+# Usage of operator overloading
+f1 = Fraction(1, 2)  # Represents 1/2
+f2 = Fraction(1, 3)  # Represents 1/3
+print(f1 + f2)  # Output: 5/6

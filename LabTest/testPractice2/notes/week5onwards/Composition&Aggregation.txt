@@ -1,0 +1,65 @@
+# Composition, Aggregation, and Polymorphism
+# Composition: 'has-a' relationship (Car has an Engine)
+class Engine:
+    def start(self):
+        print("Engine started")
+
+class Car:
+    def __init__(self):
+        self.engine = Engine()  # Car contains an Engine object
+
+    def start(self):
+        """Starts both the engine and the car."""
+        self.engine.start()
+        print("Car started")
+
+# Aggregation: Independent relationship (House has a Kitchen, but Kitchen exists independently)
+class Kitchen:
+    def __init__(self, area):
+        self.area = area  # Kitchen's attribute
+
+class House:
+    def __init__(self, kitchen):
+        self.kitchen = kitchen  # House has a kitchen, but kitchen is passed externally
+
+# Polymorphism: Common interface for different behaviors
+class Animal:
+    def speak(self):
+        pass  # Abstract method to be overridden
+
+class Dog(Animal):
+    def speak(self):
+        return "Woof!"
+
+class Cat(Animal):
+    def speak(self):
+        return "Meow!"
+
+# Usage of polymorphism
+animals = [Dog(), Cat()]
+for animal in animals:
+    print(animal.speak())  # Outputs "Woof!" and "Meow!"
+
+
+
+# Privacy and Operator Overloading
+# Privacy in Python: Using single or double underscores
+class MyClass:
+    def __init__(self):
+        self.public_attribute = "This is public"  # Accessible from anywhere
+        self.__private_attribute = "This is private"  # Accessible only within this class
+
+    def get_private(self):
+        """Returns the value of the private attribute."""
+        return self.__private_attribute
+
+    def set_private(self, value):
+        """Sets a new value to the private attribute."""
+        self.__private_attribute = value
+
+# Usage of privacy
+obj = MyClass()
+print(obj.public_attribute)  # Output: This is public
+print(obj.get_private())  # Output: This is private
+obj.set_private("New Value")  # Modifies the private attribute
+print(obj.get_private())  # Output: New Value
